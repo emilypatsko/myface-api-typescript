@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import './PostsPage.css';
 
 function PostsPage() {
 
@@ -23,18 +24,18 @@ function PostsPage() {
             <ol>
             {myData.results.map(function(post, index) {
                 return <li key = {index}> 
-                    Post ID:  {post.id} , 
-                    Message:  {post.message} , 
+                    Post ID: {post.id} , 
+                    Message: {post.message} , 
                     Image: {<a href="post.imageUrl" target="_blank">Click here to view image</a>} <br></br>
-                    Created:  {post.createdAt}, 
-                    Posted by:  {post.postedBy.username} <br></br>
-                    Likes:  {post.likedBy.length}, 
-                    Dislikes:  {post.dislikedBy.length} 
+                    Created: {post.createdAt}, 
+                    Posted by: {post.postedBy.username} <br></br>
+                    Likes: {post.likedBy.length}, 
+                    Dislikes: {post.dislikedBy.length} 
                 </li>})}               
             </ol>
    
-            <button onClick={() => myData.next ? setPage(page+1) : setPage(page)}>Next</button>
-            <button onClick={() => myData.previous ? setPage(page-1) : setPage(page)}>Previous</button>
+            <button className = {myData.next ? "" : "invisible-button"} onClick={() => myData.next ? setPage(page+1) : setPage(page)}>Next</button>
+            <button className = {myData.previous ? "" : "invisible-button"} onClick={() => myData.previous ? setPage(page-1) : setPage(page)}>Previous</button>
 
         </div>
     );
