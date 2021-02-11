@@ -1,0 +1,9 @@
+@import '../css/defaults.scss';
+
+.postsContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

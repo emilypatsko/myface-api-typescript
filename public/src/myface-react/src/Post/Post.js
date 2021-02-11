@@ -1,17 +1,16 @@
 import React from 'react';
+import '../css/Post.scss';
 
 function Post(props) {
-
-    return <li key = {props.index}> 
-                    Post ID: {props.post.id} , 
-                    Message: {props.post.message} , 
-                    Image: {<a href="post.imageUrl" target="_blank">Click here to view image</a>} <br></br>
-                    Created: {props.post.createdAt}, 
-                    Posted by: {props.post.postedBy.username} <br></br>
-                    Likes: {props.post.likedBy.length}, 
-                    Dislikes: {props.post.dislikedBy.length} 
-                </li>
-
+    return (
+        <div className='singlePost'>
+            <p>{props.post.postedBy.username}</p>
+            <p>{props.post.createdAt}</p>
+            <img src = {props.post.imageUrl}/>
+            <p>Likes: {props.post.likedBy.length}</p>
+            <p>Dislikes: {props.post.dislikedBy.length}</p>
+            <p>{props.post.message}</p>
+        </div>);
 }
 
 export {Post};

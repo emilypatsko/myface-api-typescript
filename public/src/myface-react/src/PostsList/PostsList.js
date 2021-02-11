@@ -3,10 +3,10 @@ import {Post} from '../Post/Post.js';
 
 function PostsList(props) {
     return (
-        <ol>
+        <div className = "postsContainer" >
             {props.posts.map(function(post, index) {
-                return <Post post = {post} index = {index}/>})}               
-        </ol>
+                return <Post post = {post} index = {index}/>})}     
+        </div>          
     )
 }
 

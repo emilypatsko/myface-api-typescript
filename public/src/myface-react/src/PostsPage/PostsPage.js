@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {PostsList} from '../PostsList/PostsList.js';
 import './PostsPage.scss';
+import '../css/PostsList.scss';
 
 function PostsPage() {
 

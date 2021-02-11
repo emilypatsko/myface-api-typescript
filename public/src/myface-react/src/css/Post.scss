@@ -1,0 +1,9 @@
+@import '../css/defaults.scss';
+
+.singlePost {
+    img {
+        width: 200px;
+    }
+    display: flex;
+    flex-direction: column;
+}
