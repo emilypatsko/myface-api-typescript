@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {PostsList} from '../PostsList/PostsList.js';
-import {BrowserRouter as useParams} from 'react-router-dom';
+import {UserPosts} from '../UserPosts/UserPosts.js';
+import {useParams} from 'react-router-dom';
 
 function UserPage() {
 
-    let userId = useParams();
+    let {userId} = useParams();
     const [myData, setMyData] = useState(null);
 
     useEffect(() => {
@@ -19,9 +19,14 @@ function UserPage() {
     }
     return (
         <div>
-            <h1>{myData.name}</h1>
-            <h1>Posts</h1>
-            <PostsList posts = {myData.posts}/>   
+            <h1>{myData.name}'s Profile</h1>
+            <h2>{myData.username}</h2>
+            <h2>{myData.email}</h2>
+            <img src={myData.coverImageUrl}/>
+            <img src={myData.profileImageUrl}/>
+
+            <h1>{myData.name}'s Posts</h1>       
+            <UserPosts posts = {myData.posts}/>   
         </div>
     );
 }

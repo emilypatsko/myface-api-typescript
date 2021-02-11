@@ -12,8 +12,7 @@ function App() {
           <Route path="/posts">
             <PostsPage/>
           </Route>
-
-          {/* <Route path="/users/:userId" children={<UserPage/>}> */}
+          
           <Route path="/users/:userId">
             <UserPage/>
           </Route>
