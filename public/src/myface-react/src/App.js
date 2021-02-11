@@ -16,6 +16,7 @@ function App() {
           <Route path="/users/:userId">
             <UserPage/>
           </Route>
+
         </Switch>
     </Router>
   );
