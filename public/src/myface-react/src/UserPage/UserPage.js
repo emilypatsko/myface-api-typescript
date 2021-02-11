@@ -25,8 +25,15 @@ function UserPage() {
             <img src={myData.coverImageUrl}/>
             <img src={myData.profileImageUrl}/>
 
-            <h1>{myData.name}'s Posts</h1>       
-            <UserPosts posts = {myData.posts}/>   
+            <h1>{myData.name.substr(0,myData.name.indexOf(' '))}'s Posts</h1>       
+            <UserPosts posts = {myData.posts}/> 
+
+            <h1>Posts {myData.name.substr(0,myData.name.indexOf(' '))} Liked</h1>       
+            <UserPosts posts = {myData.likes}/> 
+
+            <h1>Posts {myData.name.substr(0,myData.name.indexOf(' '))} Disliked</h1>       
+            <UserPosts posts = {myData.dislikes}/> 
+
         </div>
     );
 }

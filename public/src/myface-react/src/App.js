@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React from 'react';
 import {PostsPage} from './PostsPage/PostsPage.js';
 import {UserPage} from './UserPage/UserPage.js';
@@ -12,7 +12,7 @@ function App() {
           <Route path="/posts">
             <PostsPage/>
           </Route>
-          
+
           <Route path="/users/:userId">
             <UserPage/>
           </Route>
