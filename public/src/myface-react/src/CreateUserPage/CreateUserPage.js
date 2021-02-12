@@ -9,6 +9,7 @@ function CreateUserPage() {
     const [picUrl, setPicUrl] = useState(null);
     const [coverPicUrl, setCoverPicUrl] = useState(null);
     const [requestResult, setRequestResult] = useState(null);
+    const [errors, setErrors] = useState([]);
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -26,7 +27,12 @@ function CreateUserPage() {
                 .then(json => {
                     setRequestResult(json)
                     console.log(json)
-                    if (json.status) {handleReset()}
+                    if (json.status) {
+                        handleReset()
+                        setErrors([])
+                    } else if (json.errors) {
+                        setErrors(json.errors.map(error => error.param))
+                    }
                 });
     };
 
@@ -49,7 +55,11 @@ function CreateUserPage() {
                 <button onClick = {submitForm}>Create!</button>
             </form>
 
-            <p className = {requestResult===null || !requestResult.errors ? "no-display-error" : ""}>Invalid form entry.</p>
+            <p className = {errors.includes("name") ? "" : "no-display-error"}>Invalid name.</p>
+            <p className = {errors.includes("username") ? "" : "no-display-error"}>Invalid username.</p>
+            <p className = {errors.includes("email") ? "" : "no-display-error"}>Invalid email address.</p>
+            <p className = {errors.includes("profileImageUrl") ? "" : "no-display-error"}>Invalid profile image URL.</p>
+            <p className = {errors.includes("coverImageUrl") ? "" : "no-display-error"}>Invalid cover image URL.</p>
             <p className = {requestResult && requestResult.status ? "" : "no-display-error"}>Success!</p>
         </div>
     )
