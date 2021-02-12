@@ -8,6 +8,22 @@ function CreateUserPage() {
     const [picUrl, setPicUrl] = useState(null);
     const [coverPicUrl, setCoverPicUrl] = useState(null);
 
+    const submitForm = (e) => {
+        e.preventDefault();
+        fetch(`http://localhost:3001/users/create`,
+                {method: 'POST',
+                body: JSON.stringify({"name": name, 
+                                      "username": username,
+                                      "email": email,
+                                      "profileImageUrl": picUrl,
+                                      "coverImageUrl": coverPicUrl
+                                    }),
+                headers: {'Content-Type': 'application/json'},
+                }
+                ).then(response => response.json())
+                .then(json => console.log(json));
+    };
+
     return (
         <div>
             <h1>Create New User</h1>
@@ -22,10 +38,6 @@ function CreateUserPage() {
             </form>
         </div>
     )
-}
-
-const submitForm = (e) => {
-    e.preventDefault();
 }
 
 export {CreateUserPage};
