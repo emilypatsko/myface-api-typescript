@@ -1,3 +1,11 @@
 .no-display-error {
     display: none;
 }
+
+input:valid {
+    background-color: green;
+}
+
+input:focus:invalid {
+    background-color: red;
+}

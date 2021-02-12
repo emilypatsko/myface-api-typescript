@@ -46,7 +46,7 @@ function CreateUserPage() {
         <div>
             <h1>Create New User</h1>
             <form>
-                Name: <input type = "text" onInput = {(e) => setName(e.target.value)} required />
+                Name: <input type = "text" onInput = {(e) => setName(e.target.value)} pattern = "[A-Za-z]+ [A-Za-z]+" required />
                 Username: <input type = "text" onInput = {(e) => setUsername(e.target.value)} required />
                 Email: <input type = "email" onInput = {(e) => setEmail(e.target.value)} required />
                 Profile picture URL: <input type = "text" onInput = {(e) => setPicUrl(e.target.value)} required />
