@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../css/CreateUserPage.scss';
 
 function CreateUserPage() {
 
@@ -7,6 +8,7 @@ function CreateUserPage() {
     const [email, setEmail] = useState(null);
     const [picUrl, setPicUrl] = useState(null);
     const [coverPicUrl, setCoverPicUrl] = useState(null);
+    const [requestResult, setRequestResult] = useState(null);
 
     const submitForm = (e) => {
         e.preventDefault();
@@ -21,8 +23,18 @@ function CreateUserPage() {
                 headers: {'Content-Type': 'application/json'},
                 }
                 ).then(response => response.json())
-                .then(json => console.log(json));
+                .then(json => {
+                    setRequestResult(json)
+                    console.log(json)
+                    if (json.status) {handleReset()}
+                });
     };
+
+    const handleReset = () => {
+        Array.from(document.querySelectorAll("input")).forEach(
+          input => (input.value = "")
+        );
+    }
 
     return (
         <div>
@@ -36,6 +48,9 @@ function CreateUserPage() {
 
                 <button onClick = {submitForm}>Create!</button>
             </form>
+
+            <p className = {requestResult===null || !requestResult.errors ? "no-display-error" : ""}>Invalid form entry.</p>
+            <p className = {requestResult && requestResult.status ? "" : "no-display-error"}>Success!</p>
         </div>
     )
 }
